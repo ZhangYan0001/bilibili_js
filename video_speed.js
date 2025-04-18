@@ -128,7 +128,8 @@
         speedIndicator.textContent = '播放速度: 1.0x';
         document.body.appendChild(speedIndicator);
 
-        let currentSpeed = 1.0;
+        // 获取当前视频的实际播放速度
+        let currentSpeed = video.playbackRate || 1.0;
         let hideTimer = null;
 
         // 更新当前速度的函数
@@ -138,6 +139,8 @@
 
         // 显示速度指示器
         function showSpeedIndicator() {
+            // 获取实际播放速度
+            currentSpeed = video.playbackRate;
             speedIndicator.textContent = `播放速度: ${currentSpeed.toFixed(2)}x`;
             speedIndicator.style.display = 'block';
 
@@ -149,9 +152,17 @@
 
         // 设置初始速度
         video.playbackRate = currentSpeed;
+        
+        // 监听播放速度变化
+        video.addEventListener('ratechange', () => {
+            currentSpeed = video.playbackRate;
+            showSpeedIndicator();
+        });
 
         // 监听播放事件
         video.addEventListener('play', () => {
+            // 获取当前实际播放速度
+            currentSpeed = video.playbackRate;
             video.playbackRate = currentSpeed;
         });
 
