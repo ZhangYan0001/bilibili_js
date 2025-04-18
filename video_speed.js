@@ -1,9 +1,10 @@
 
 // ==UserScript==
 // @name         b站加速
+// @version      1.0
+// @description  给b站添加加速功能
 // @namespace    http://www.bilibili.com/*
 // @version      2025-04-18
-// @description  try to take over the world!
 // @author       You
 // @match        https://www.bilibili.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
